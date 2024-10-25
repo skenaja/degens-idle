@@ -582,15 +582,15 @@ function playMiniGame(gameType) {
                     // Deselect the portal
                     portal.classList.remove('selected');
                     portal.style.backgroundColor = '#00BFFF'; // Reset background color
-                    selectedPortals = selectedPortals.filter(value => value !== num);
+                    selectedPortals = selectedPortals.filter(p => p !== portal); // Filter by portal reference
                 } else {
                     // Select the portal
                     portal.classList.add('selected');
                     portal.style.backgroundColor = '#FFD700'; // Change background color for selected portals
-                    selectedPortals.push(num);
+                    selectedPortals.push(portal);
                 }
 
-                const sum = selectedPortals.reduce((acc, curr) => acc + curr, 0);
+                const sum = selectedPortals.reduce((acc, portal) => acc + Number(portal.textContent), 0);
 
                 targetDisplay.textContent = `Target: ${targetSum}`;
                 currentSumDisplay.textContent = `Current Sum: ${sum}`;
